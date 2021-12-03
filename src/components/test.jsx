@@ -119,19 +119,37 @@ import PropTypes from 'prop-types';
 //   </div>;
 // );
 
-const Mailbox = ({ name, unreadMessages }) => (
-  <div>
-    <h1>Hello {name}</h1>
-    {unreadMessages.length > 0
-      ? `You have ${unreadMessages.length} unread messages`
-      : `No unread messages`}
-  </div>
-);
-const Product = ({ imgUrl, name, price, quantity }) => (
-  <div>
-    <img src={imgUrl} alt={name} width="640" />
-    <h2>{name}</h2>
-    <p>Price: {price}</p>
-    <h1>Quantity: {quantity < 20 ? `Few left` : `In stock`}</h1>
-  </div>
+// const Mailbox = ({ name, unreadMessages }) => (
+//   <div>
+//     <h1>Hello {name}</h1>
+//     {unreadMessages.length > 0
+//       ? `You have ${unreadMessages.length} unread messages`
+//       : `No unread messages`}
+//   </div>
+// );
+// const Product = ({ imgUrl, name, price, quantity }) => (
+//   <div>
+//     <img src={imgUrl} alt={name} width="640" />
+//     <h2>{name}</h2>
+//     <p>Price: {price}</p>
+//     <h1>Quantity: {quantity < 20 ? `Few left` : `In stock`}</h1>
+//   </div>
+// );
+// Модуль 1 - 10. Коллекции
+const favoriteBooks = [
+  { id: 'id-', name: 'JS for beginners' },
+  { id: 'id-', name: 'React basics' },
+  { id: 'id-', name: 'React Router overview' },
+  { id: 'id-', name: 'Redux in depth' },
+];
+const BookList = ({ book }) => {
+  <ul>
+    {book.map(book => (
+      <li>{book.name}</li>
+    ))}
+  </ul>;
+};
+ReactDOM.render(
+  <BookList book={favoriteBooks} />,
+  document.getElementById('root')
 );
