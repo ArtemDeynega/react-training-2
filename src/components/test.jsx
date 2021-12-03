@@ -135,7 +135,7 @@ import PropTypes from 'prop-types';
 //     <h1>Quantity: {quantity < 20 ? `Few left` : `In stock`}</h1>
 //   </div>
 // );
-// Модуль 1 - 10. Коллекции
+// Модуль 1 - 10. Коллекции, 10.1. Ключи
 const favoriteBooks = [
   { id: 'id-', name: 'JS for beginners' },
   { id: 'id-', name: 'React basics' },
@@ -145,7 +145,7 @@ const favoriteBooks = [
 const BookList = ({ book }) => {
   <ul>
     {book.map(book => (
-      <li>{book.name}</li>
+      <li key={book.id}>{book.name}</li>
     ))}
   </ul>;
 };
