@@ -99,11 +99,39 @@ import PropTypes from 'prop-types';
 // );
 
 //   Модуль 1 - 9. Рендер по условию 9.1. if с помощью логического оператора &&
-const Mailbox = ({ unreadMessages }) => {
+// const Mailbox = ({ unreadMessages }) => {
+//   <div>
+//     <h1>Hello!</h1>
+//     {unreadMessages.length > 0 && (
+//       <p>You have{unreadMessages.length} unread messages.</p>
+//     )}
+//   </div>;
+// };
+//   Модуль 1 - 9.2 if...else с помощью тернарного оператора
+// const Mailbox = ({ name, unreadMessages }) => (
+//   <div>
+//     <h1>Hello {name}!</h1>
+//     {unreadMessages > 0 ? (
+//       <p>You have {unreadMessages.length} unread messages.</p>
+//     ) : (
+//       <p>No unread messages</p>
+//     )}
+//   </div>;
+// );
+
+const Mailbox = ({ name, unreadMessages }) => (
   <div>
-    <h1>Hello!</h1>
-    {unreadMessages.length > 0 && (
-      <p>You have{unreadMessages.length} unread messages.</p>
-    )}
-  </div>;
-};
+    <h1>Hello {name}</h1>
+    {unreadMessages.length > 0
+      ? `You have ${unreadMessages.length} unread messages`
+      : `No unread messages`}
+  </div>
+);
+const Product = ({ imgUrl, name, price, quantity }) => (
+  <div>
+    <img src={imgUrl} alt={name} width="640" />
+    <h2>{name}</h2>
+    <p>Price: {price}</p>
+    <h1>Quantity: {quantity < 20 ? `Few left` : `In stock`}</h1>
+  </div>
+);
