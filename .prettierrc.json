@@ -6,5 +6,6 @@
     "railingComma": "all",
     "bracketSpacing": true,
     "arrowParens": "avoid",
-    "proseWrap": "always"
+    "proseWrap": "always",
+    "trailingComma": "es5"
 }

@@ -73,30 +73,32 @@ import reportWebVitals from './reportWebVitals';
 
 // Модуль 1 - 8.2. Свойство defaultProps
 
-const Product = ({ imgUrl, name, price }) => {
-  <div>
-    <img src={imgUrl} alt={name} width="640" />
-    <h2>{name}</h2>
-    <p>Price: {price}</p>
-    <button type="button">Add to cart</button>
-  </div>;
-};
-Product.defaultProps = {
-  imgUrl:
-    'https://dummyimage.com/640x480/2a2a2a/ffffff&text=Product+image+placeholder',
-};
-/*
- * Определение defaultProps гарантирует, что `props.imgUrl` будет иметь значение,
- * даже если оно не было указано при вызове компонента в родителе.
- */
+// const Product = ({ imgUrl, name, price }) => {
+//   <div>
+//     <img src={imgUrl} alt={name} width="640" />
+//     <h2>{name}</h2>
+//     <p>Price: {price}</p>
+//     <button type="button">Add to cart</button>
+//   </div>;
+// };
+// Product.defaultProps = {
+//   imgUrl:
+//     'https://dummyimage.com/640x480/2a2a2a/ffffff&text=Product+image+placeholder',
+// };
+// /*
+//  * Определение defaultProps гарантирует, что `props.imgUrl` будет иметь значение,
+//  * даже если оно не было указано при вызове компонента в родителе.
+//  */
 
-Product.defaultProps = {
-  imgUrl: PropTypes.string,
-  name: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
-};
+// Product.defaultProps = {
+//   imgUrl: PropTypes.string,
+//   name: PropTypes.string.isRequired,
+//   price: PropTypes.number.isRequired,
+// };
 
-ReactDOM.render(
-  <Product name="Tacos With Lime" price={10.99} />,
-  document.getElementById('root')
-);
+// ReactDOM.render(
+//   <Product name="Tacos With Lime" price={10.99} />,
+//   document.getElementById('root')
+// );
+
+//   Модуль 1 - 9. Рендер по условию 9.1. if с помощью логического оператора &&
