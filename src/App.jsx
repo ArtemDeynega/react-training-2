@@ -11,7 +11,6 @@ export default function App() {
         <PaintingList items={paintings} />
       </Section>
       <Section title="Лучшее">
-        {' '}
         <PaintingList items={paintings} />
       </Section>
     </div>
