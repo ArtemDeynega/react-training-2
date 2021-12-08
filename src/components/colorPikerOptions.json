@@ -1,0 +1,26 @@
+[
+    {
+        "label": "red",
+        "color": "#8B0000"
+    },
+    {
+        "label": "green",
+        "color": "#008000"
+    },
+    {
+        "label": "blue",
+        "color": "#87CEEB"
+    },
+    {
+        "label": "gray",
+        "color": "#696969"
+    },
+    {
+        "label": "plum",
+        "color": "#DDA0DD"
+    },
+    {
+        "label": "coral",
+        "color": "#FF7F50"
+    }
+]
