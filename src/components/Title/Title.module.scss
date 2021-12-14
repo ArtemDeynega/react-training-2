@@ -1,0 +1,9 @@
+$error-color: red;
+$background-color: darkcyan;
+
+.Title {
+  background-color: $background-color;
+  &--error {
+    color: $error-color;
+  }
+}

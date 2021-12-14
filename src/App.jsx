@@ -1,5 +1,7 @@
 // import PaintingList from './components/PaintingList';
-import FirstComponents from 'components/FirstComponents/FirstComponents';
+import Title from 'components/Title';
+import { Button } from 'components/Button';
+import { Slider } from './components/Slider';
 
 // import paintings from './paintings.json';
 // import Section from 'components/Section';
@@ -10,8 +12,11 @@ import FirstComponents from 'components/FirstComponents/FirstComponents';
 export default function App() {
   return (
     <div>
-      <FirstComponents number={37}>See you to Thursdey</FirstComponents>
-      <FirstComponents number={41}>See you in 2021</FirstComponents>
+      <Title number={37}>See you to Thursdey</Title>
+      <Slider />
+      <Button primary>Learn React</Button>
+      <Button>Don Not Learn Angular</Button>
+
       {/* <ColorPiker options={colorPikerOptions} />
       <PaintingList items={paintings} /> */}
 
