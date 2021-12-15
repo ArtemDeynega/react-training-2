@@ -1,22 +1,11 @@
 // import PaintingList from './components/PaintingList';
-import Title from 'components/Title';
-import { Button } from 'components/Button';
-import { Slider } from './components/Slider';
-
-// import paintings from './paintings.json';
-// import Section from 'components/Section';
-// import colorPikerOptions from './components/colorPikerOptions.json';
-// import ColorPiker from 'components/ColorPiker';
-// import Alert from 'components/Alert';
-
+import { MyClassComponent } from 'components/MyClassComponent';
+import { Counter } from 'components/Counter';
 export default function App() {
   return (
     <div>
-      <Title number={37}>See you to Thursdey</Title>
-      <Slider />
-      <Button primary>Learn React</Button>
-      <Button>Don Not Learn Angular</Button>
-
+      <MyClassComponent />
+      <Counter step={3} prob="это prob" />
       {/* <ColorPiker options={colorPikerOptions} />
       <PaintingList items={paintings} /> */}
 
