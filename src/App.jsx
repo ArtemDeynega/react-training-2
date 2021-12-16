@@ -5,7 +5,7 @@ export default function App() {
   return (
     <div>
       <MyClassComponent />
-      <Counter step={3} prob="это prob" />
+      <Counter step={1} />
       {/* <ColorPiker options={colorPikerOptions} />
       <PaintingList items={paintings} /> */}
 

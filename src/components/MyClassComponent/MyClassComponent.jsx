@@ -7,5 +7,3 @@ export class MyClassComponent extends Component {
     return <div>Это Компонент Класс</div>;
   }
 }
-
-console.log(Component);
