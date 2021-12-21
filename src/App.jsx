@@ -1,11 +1,15 @@
 // import PaintingList from './components/PaintingList';
-import { MyClassComponent } from 'components/MyClassComponent';
-import { Counter } from 'components/Counter';
+// import { MyClassComponent } from 'components/MyClassComponent';
+// import { Counter } from 'components/Counter';
+import { Btst } from 'components/Counter';
+import { Toogle } from 'components/Toogle';
 export default function App() {
   return (
     <div>
-      <MyClassComponent />
-      <Counter step={1} />
+      <Toogle />
+      {/* <MyClassComponent /> */}
+      {/* <Counter value={1} /> */}
+      <Btst />
       {/* <ColorPiker options={colorPikerOptions} />
       <PaintingList items={paintings} /> */}
 
