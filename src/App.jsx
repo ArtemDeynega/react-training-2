@@ -1,6 +1,8 @@
 // import PaintingList from './components/PaintingList';
 // import { MyClassComponent } from 'components/MyClassComponent';
 // import { Counter } from 'components/Counter';
+// import { Input } from 'components/Input';
+import { SignUpForm } from 'components/SignUpForm';
 import { Btst } from 'components/Counter';
 import { Toogle } from 'components/Toogle';
 export default function App() {
@@ -10,6 +12,8 @@ export default function App() {
       {/* <MyClassComponent /> */}
       {/* <Counter value={1} /> */}
       <Btst />
+      <SignUpForm />
+      {/* <Input /> */}
       {/* <ColorPiker options={colorPikerOptions} />
       <PaintingList items={paintings} /> */}
 
