@@ -17,7 +17,7 @@ export class Counter extends Component {
   };
   handleIncrement = evt => {
     console.log(`Кликнули увеличить на 1`);
-    this.setState(stat => ({ value: stat.value + 1 }));
+    this.setState(state => ({ value: state.value + 1 }));
 
     // const { target } = evt;
 
@@ -41,7 +41,7 @@ export class Counter extends Component {
     const { value } = this.state;
     return (
       <div className={style.Counter}>
-        <OnValue onValue={value} />
+        <OnValue value={value} />
         <Controls
           onIncrement={this.handleIncrement}
           onDecrement={this.handleDecriment}

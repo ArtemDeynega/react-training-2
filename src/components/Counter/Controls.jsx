@@ -1,4 +1,4 @@
-import style from './Counter.module.css';
+import style from './Controls.module.css';
 
 export const Controls = ({ onIncrement, onDecrement }) => (
   <div className={style.Counter__controls}>
