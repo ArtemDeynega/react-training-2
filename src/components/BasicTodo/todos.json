@@ -7,12 +7,12 @@
     {
         "id": "id-2",
         "text": "Выучить основы JS",
-        "completed": true
+        "completed": false
     },
     {
         "id": "id-3",
         "text": "Разобраться с React Router",
-        "completed": true
+        "completed": false
     },
     {
         "id": "id-4",
