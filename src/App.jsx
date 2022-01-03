@@ -1,34 +1,25 @@
-// import PaintingList from './components/PaintingList';
-import Title from 'components/Title';
-import { Button } from 'components/Button';
-import { Slider } from './components/Slider';
+import React from 'react';
+// import PropTypes from 'prop-types';
+// import { Counter } from './components/Counter';
+// import { Dropdown } from 'components/Dropdown';
+import { ColorPicker } from 'components/ColorPiker';
+import colorPikerOptions from './components/colorPikerOptions.json';
+import { BasicTodo } from 'components/BasicTodo';
+import { Modal } from './components/BasicTodo/Modal';
+// import { BasicRestApi } from 'components/BasicRestApi/BasicRestApi';
+// import { NewCounter } from 'components/NewCounter';
 
-// import paintings from './paintings.json';
-// import Section from 'components/Section';
-// import colorPikerOptions from './components/colorPikerOptions.json';
-// import ColorPiker from 'components/ColorPiker';
-// import Alert from 'components/Alert';
+// import { Component } from 'react';
 
 export default function App() {
   return (
-    <div>
-      <Title number={37}>See you to Thursdey</Title>
-      <Slider />
-      <Button primary>Learn React</Button>
-      <Button>Don Not Learn Angular</Button>
+    <>
+      {/* <Counter /> */}
+      {/* <Dropdown /> */}
+      {/* <ColorPicker options={colorPikerOptions} /> */}
+      <BasicTodo />
 
-      {/* <ColorPiker options={colorPikerOptions} />
-      <PaintingList items={paintings} /> */}
-
-      {/* <Alert text="Шеф все пропало" type="success" />
-      <Alert text="Шеф все пропало" type="warning" />
-      <Alert text="Шеф все пропало" type="error" /> */}
-      {/* <Section title="Топ недели">
-        <PaintingList items={paintings} />
-      </Section>
-      <Section title="Лучшее">
-        <PaintingList items={paintings} />
-      </Section> */}
-    </div>
+      {/* <BasicRestApi /> */}
+    </>
   );
 }
