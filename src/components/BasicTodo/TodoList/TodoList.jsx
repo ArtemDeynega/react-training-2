@@ -1,5 +1,6 @@
 import './TodoList.scss';
 import classNames from 'classnames';
+import { Todo } from './Todo';
 
 export const TodoList = ({
   todos,
@@ -14,19 +15,12 @@ export const TodoList = ({
           TodoListItemCompleted: completed,
         })}
       >
-        <input
-          className="TodoListCheckbox"
-          type="checkbox"
-          checked={completed}
-          onChange={() => onToggleCompleted(id)}
+        <Todo
+          onDeleteTodo={() => onDeleteTodo(id)}
+          onToggleCompleted={() => onToggleCompleted(id)}
+          text={text}
+          completed={completed}
         />
-        <p className="ToodoListText">{text}</p>
-        <button
-          className="TodoListBtn"
-          onClick={() => onDeleteTodo(id)}
-        >
-          Удалить
-        </button>
       </li>
     ))}
   </ul>

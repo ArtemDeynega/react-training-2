@@ -1,16 +1,62 @@
+/* eslint-disable no-lone-blocks */
 import { Component } from 'react';
 import { TodoList } from './TodoList';
-import initialTodos from './todos.json';
-import { Form } from './Form';
+// import initialTodos from './todos.json';
+// import { Form } from './Form';
 import shortid from 'shortid';
 import { TodoEditor } from './TodoEditor/TodoEditor';
 import { FilterTodo } from './FilterTodo';
+import { IconButton } from './IconButton';
+import { ReactComponent as AddIcon } from '../../icons/add.svg';
+
+import { Modal } from './Modal';
+
+// import { Clock } from './Clock';
 
 export class BasicTodo extends Component {
   state = {
-    todos: initialTodos,
+    todos: [],
     filter: '',
+    showModal: false,
   };
+
+  componentDidMount() {
+    // console.log('App conmponent Did Mount');
+    const todos = localStorage.getItem('todos');
+    const parsetodos = JSON.parse(todos);
+    // console.log(parsetodos);
+    // eslint-disable-next-line no-lone-blocks
+    {
+      parsetodos && this.setState({ todos: parsetodos });
+    }
+  }
+  componentDidUpdate(prevProps, prevState) {
+    // console.log('App component Update');
+    const nextTodos = this.state.todos;
+    const prevRodos = prevState.todos;
+
+    {
+      nextTodos !== prevRodos &&
+        localStorage.setItem(
+          'todos',
+          JSON.stringify(this.state.todos),
+        );
+    }
+
+    //========= Закрытие модалки лучший способ с проверками
+    if (
+      nextTodos.length > prevRodos.length &&
+      prevRodos.length !== 0
+    ) {
+      this.toggleModal();
+    }
+
+    // if (this.state.todos !== prevState.todos) {
+    // }
+    // console.log(prevState);
+    // console.log(this.state);
+  }
+
   deleteTodo = todoId => {
     this.setState(prevState => ({
       todos: prevState.todos.filter(
@@ -27,10 +73,13 @@ export class BasicTodo extends Component {
     this.setState(({ todos }) => ({
       todos: [todo, ...todos],
     }));
+
+    //========= Закрытие модалки более логический способ
+    // this.toggleModal();
   };
 
   onToggleCompleted = todoId => {
-    console.log(todoId);
+    // console.log(todoId);
     // ======== КАК ДЕЛАТЬ ПО СТАРОМУ
     // this.setState(prevState => ({
     //   // todos: prevState.todos.map(todo => {
@@ -55,9 +104,7 @@ export class BasicTodo extends Component {
     }));
   };
 
-  formSubmitHandler = data => {
-    console.log(data);
-  };
+  formSubmitHandler = data => {};
   changeFilter = evt => {
     this.setState({ filter: evt.target.value });
   };
@@ -79,14 +126,37 @@ export class BasicTodo extends Component {
     );
   };
 
+  toggleModal = () => {
+    this.setState(({ showModal }) => ({
+      showModal: !showModal,
+    }));
+  };
+
   render() {
-    const { todos, filter } = this.state;
+    // console.log('App render');
+    const { todos, filter, showModal } = this.state;
     const totalTodoCount = todos.length;
     const completedTodos = this.calculateCompletedTodos();
     const visibleTodos = this.getVisibleTodos();
 
     return (
       <>
+        <IconButton
+          onClick={this.toggleModal}
+          aria-label="Добавить todo"
+        >
+          <AddIcon width="40" height="40" fill="#fff" />
+        </IconButton>
+        {/* <button type="button" onClick={this.toggleModal}>
+            Открыть модалку
+          </button> */}
+        {/* {showModal && <Clock />} */}
+        {showModal && (
+          <Modal onClose={this.toggleModal}>
+            <TodoEditor onSubmit={this.addTodo} />
+          </Modal>
+        )}
+
         {/* <Form onSubmit={this.formSubmitHandler} /> */}
 
         <div>
@@ -95,7 +165,7 @@ export class BasicTodo extends Component {
             Количество выполненных туду: {completedTodos}
           </p>
         </div>
-        <TodoEditor onSubmit={this.addTodo} />
+
         <FilterTodo
           value={filter}
           onChange={this.changeFilter}
