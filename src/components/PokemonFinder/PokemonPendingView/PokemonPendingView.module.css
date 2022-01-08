@@ -1,0 +1,34 @@
+/* .Spinner {
+  display: 'flex';
+  alignitems: 'center';
+  marginbottom: 10;
+  fontsize: 24;
+} */
+.Spinner {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10;
+  font-size: 24;
+}
+
+.IconSpin {
+  margin-right: 10px;
+  animation: icon-spin 2s infinite linear;
+}
+
+@-webkit-keyframes icon-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(359deg);
+  }
+}
+@keyframes icon-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(359deg);
+  }
+}
