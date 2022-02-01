@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { useState, useEffect } from 'react';
 
 import { PokemonErrorViev } from '../PokemonErrorViev';
 import { PokemonDataView } from '../PokemonDataView';
@@ -8,87 +8,76 @@ import { PokemonPendingView } from '../PokemonPendingView';
 // ('pending');
 // ('resolved');
 // ('rejected');
+const Status = {
+  IDLE: 'idle',
+  PENDING: 'pending',
+  RESOLVED: 'resolved',
+  REJECTED: 'rejected',
+};
+export const PokemonInfo = ({ pokemonName }) => {
+  const [pokemon, setPokemon] = useState(null);
+  const [error, setError] = useState(null);
+  const [status, setStatus] = useState(Status.IDLE);
+  useEffect(() => {
+    if (!pokemonName) {
+      return;
+    }
+    setStatus(Status.PENDING);
 
-export class PokemonInfo extends Component {
-  state = {
-    pokemon: null,
-
-    error: null,
-    status: 'idle',
-  };
-  componentDidUpdate(prevProps, prevState) {
-    const prevName = prevProps.pokemonName;
-    const currentName = this.props.pokemonName;
-
-    if (prevName !== currentName) {
-      this.setState({
-        status: 'pending',
-      });
-
-      fetch(
-        `https://pokeapi.co/api/v2/pokemon/${currentName}`,
-      )
-        .then(res => {
-          if (res.ok) {
-            return res.json();
-          }
-
-          return Promise.reject(
-            new Error(
-              `Такого покемона ${currentName} не существует 😔`,
-            ),
-          );
-        })
-        .then(pokemon =>
-          this.setState({ pokemon, status: 'resolved' }),
-        )
-        .catch(error =>
-          this.setState({ error, status: 'rejected' }),
+    fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(
+          new Error(`Такого покемона ${pokemonName} не существует 😔`),
         );
+      })
+      .then(newPokemon => {
+        setPokemon(newPokemon);
+        setStatus(Status.RESOLVED);
+      })
+      .catch(error => {
+        setError(error);
+        setStatus(Status.REJECTED);
+      });
+  }, [pokemonName]);
 
-      // this.setState({ });
-    }
-  }
-
-  render() {
-    const { pokemon, error, status } = this.state;
-    const { pokemonName } = this.props;
-
-    if (status === 'idle') {
-      return <h2>Введите имя покемона</h2>;
-    }
-    if (status === 'pending') {
-      return (
+  return (
+    <>
+      {status === Status.IDLE && <h2>Введите имя покемона</h2>}
+      {status === Status.PENDING && (
         <PokemonPendingView pokemonName={pokemonName} />
-      );
-    }
-    if (status === 'resolved') {
-      return <PokemonDataView pokemon={pokemon} />;
-    }
+      )}
 
-    if (status === 'rejected') {
-      return <PokemonErrorViev message={error.message} />;
-    }
-    //  return (
-    //     <>
-    //       {/* {error && <h2>{error.message}</h2>} */}
-    //       {/* {loading && <h1>Загружаем...</h1>} */}
-    //       {/* {!pokemonName && <h2>Введите имя покемона</h2>} */}
-    //       {/*  {pokemon && (
-    //           <div>
-    //             <h1>Pokemon Info</h1>
-    //             <p>{pokemon.name}</p>
-    //             <img
-    //               src={
-    //                 pokemon.sprites.other['official-artwork']
-    //                   .front_default
-    //               }
-    //               alt={pokemon.name}
-    //               width={240}
-    //             />
-    //           </div>
-    //         )} */}
-    //     </>
-    //   );
-  }
-}
+      {status === Status.RESOLVED && <PokemonDataView pokemon={pokemon} />}
+      {status === Status.REJECTED && (
+        <PokemonErrorViev message={error.message} />
+      )}
+    </>
+  );
+
+  // componentDidUpdate(prevProps, prevState) {
+  //   const prevName = prevProps.pokemonName;
+  //   const currentName = this.props.pokemonName;
+
+  //   if (prevName !== currentName) {
+  //     this.setState({
+  //       status: 'pending',
+  //     });
+
+  //     fetch(`https://pokeapi.co/api/v2/pokemon/${currentName}`)
+  //       .then(res => {
+  //         if (res.ok) {
+  //           return res.json();
+  //         }
+
+  //         return Promise.reject(
+  //           new Error(`Такого покемона ${currentName} не существует 😔`),
+  //         );
+  //       })
+  //       .then(pokemon => this.setState({ pokemon, status: 'resolved' }))
+  //       .catch(error => this.setState({ error, status: 'rejected' }));
+  //   }
+  // }
+};

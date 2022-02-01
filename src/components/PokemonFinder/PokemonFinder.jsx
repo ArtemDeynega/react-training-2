@@ -35,16 +35,8 @@ export class PokemonFinder extends Component {
     // const { pokemon, loading } = this.state;
     return (
       <>
-        <div
-          style={{
-            maxWidth: 1170,
-            margin: '0 auto',
-            padding: 20,
-          }}
-        >
-          <PokemonForm
-            onSubmit={this.handleSearchFormSubmit}
-          />
+        <div>
+          <PokemonForm onSubmit={this.handleSearchFormSubmit} />
           <PokemonInfo pokemonName={pokemonName} />
           {/* <PokemonDataView pokemonName={pokemonName} /> */}
           {/* {loading && <h1>Loading...</h1>}
