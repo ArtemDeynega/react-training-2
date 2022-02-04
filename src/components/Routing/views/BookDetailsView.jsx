@@ -4,7 +4,7 @@ import { PageHeading } from '../PageHeading/';
 
 import * as bookShelAPI from '../services/bookshelfApi';
 
-export const BookDetailsView = () => {
+const BookDetailsView = () => {
   const { booksId } = useParams();
   const [books, setBooks] = useState(null);
 
@@ -27,3 +27,4 @@ export const BookDetailsView = () => {
     </>
   );
 };
+export default BookDetailsView;

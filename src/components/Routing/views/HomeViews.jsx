@@ -1,6 +1,6 @@
 import { PageHeading } from '../PageHeading/';
 
-export const HomeViews = () => {
+const HomeViews = () => {
   return (
     <>
       <PageHeading text="Додбро пожаловать!" />
@@ -31,3 +31,4 @@ export const HomeViews = () => {
     </>
   );
 };
+export default HomeViews;
